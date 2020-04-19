@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:sk="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             mc:Ignorable="d"
+             x:Class="AlarmApp.MainPage">
+
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <pv:PancakeView BackgroundGradientAngle="300">
+            <pv:PancakeView.BackgroundGradientStops>
+                <pv:GradientStopCollection>
+                    <pv:GradientStop Color="#D5D8E5" Offset="0"/>
+                    <pv:GradientStop Color="#E7E9EF" Offset="0.3"/>
+                    <pv:GradientStop Color="#FFFFFF" Offset="1"/>
+                </pv:GradientStopCollection>
+            </pv:PancakeView.BackgroundGradientStops>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid WidthRequest="250" HeightRequest="250" Margin="0,45" VerticalOptions="End" HorizontalOptions="Center">
+                    <sk:SKCanvasView x:Name="canvasView" PaintSurface="canvas_PaintSurface"/>
+                    <Frame WidthRequest="30" HeightRequest="26" HasShadow="True" BorderColor="#D7DAE6" Padding="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="100,0,0,0">
+                        <Label x:Name="secondsTxt" FontSize="20" TextColor="#333436" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Frame>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0,20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout HorizontalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label x:Name="timeTxt" TextColor="#333436" FontSize="70" FontFamily="LightFont" VerticalOptions="Center"/>
+                            <Label x:Name="periodTxt" TextColor="#333436" FontSize="20" FontFamily="RegularFont" VerticalOptions="Center" Margin="0,20,0,0"/>
+                        </StackLayout>
+                        <Label x:Name="alarmTxt" FontSize="15" FontFamily="MediumFont" HorizontalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="SWIPE TO CANCEL" TextColor="#333436" FontSize="15" FontFamily="MediumFont" HorizontalOptions="Center"/>
+                        <Grid HorizontalOptions="Center">
+                            <BoxView BackgroundColor="#FFCBE5" HeightRequest="1" WidthRequest="180" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <pv:PancakeView x:Name="slider" WidthRequest="25" HeightRequest="5" CornerRadius="3" HasShadow="True" BackgroundColor="#DE0469" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </pv:PancakeView>
+    </Grid>
+
+</ContentPage>
